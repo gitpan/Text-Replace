@@ -10,22 +10,22 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.02';
-$DATE = '2003/07/27';
+$VERSION = '0.03';
+$DATE = '2003/09/15';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/Text_Replace.pm' => [qw(0.02 2003/07/27), 'revised 0.01'],
-    'MANIFEST' => [qw(0.02 2003/07/27), 'generated, replaces 0.01'],
-    'Makefile.PL' => [qw(0.02 2003/07/27), 'generated, replaces 0.01'],
-    'README' => [qw(0.02 2003/07/27), 'generated, replaces 0.01'],
-    'lib/Text/Replace.pm' => [qw(1.09 2003/07/27), 'revised 1.08'],
-    't/Text/Replace.d' => [qw(0.03 2003/07/27), 'revised 0.02'],
+    'lib/Docs/Site_SVD/Text_Replace.pm' => [qw(0.03 2003/09/15), 'revised 0.02'],
+    'MANIFEST' => [qw(0.03 2003/09/15), 'generated, replaces 0.02'],
+    'Makefile.PL' => [qw(0.03 2003/09/15), 'generated, replaces 0.02'],
+    'README' => [qw(0.03 2003/09/15), 'generated, replaces 0.02'],
+    'lib/Text/Replace.pm' => [qw(1.09 2003/07/27), 'unchanged'],
+    't/Text/Replace.d' => [qw(0.01 2003/07/27), 'unchanged'],
     't/Text/Replace.pm' => [qw(0.01 2003/07/05), 'unchanged'],
-    't/Text/Replace.t' => [qw(0.03 2003/07/27), 'revised 0.02'],
-    'tlib/File/Package.pm' => [qw(1.1 2003/07/27), 'new'],
-    'tlib/Test/Tech.pm' => [qw(1.11 2003/07/27), 'new'],
+    't/Text/Replace.t' => [qw(0.04 2003/09/15), 'revised 0.03'],
+    'tlib/File/Package.pm' => [qw(1.12 2003/09/15), 'revised 1.1'],
+    'tlib/Test/Tech.pm' => [qw(1.13 2003/09/15), 'revised 1.11'],
 
 );
 
@@ -52,11 +52,11 @@ use vars qw(%INVENTORY);
 
  Text::Replace - Replace variables in templates
 
- Revision: A
+ Revision: B
 
- Version: 0.02
+ Version: 0.03
 
- Date: 2003/07/27
+ Date: 2003/09/15
 
  Prepared for: General Public 
 
@@ -107,7 +107,7 @@ with emails or form letters.
 
 =head2 1.3 Document overview.
 
-This document releases Text::Replace version 0.02
+This document releases Text::Replace version 0.03
 providing a description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -123,8 +123,8 @@ system file specification.
 This document releases the file found
 at the following repository(s):
 
-   http://www.softwarediamonds/packages/Text-Replace-0.02
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/Text-Replace-0.02
+   http://www.softwarediamonds/packages/Text-Replace-0.03
+   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/Text-Replace-0.03
 
 
 Restrictions regarding duplication and license provisions
@@ -192,16 +192,16 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/Text_Replace.pm                            0.02    2003/07/27 revised 0.01
- MANIFEST                                                     0.02    2003/07/27 generated, replaces 0.01
- Makefile.PL                                                  0.02    2003/07/27 generated, replaces 0.01
- README                                                       0.02    2003/07/27 generated, replaces 0.01
- lib/Text/Replace.pm                                          1.09    2003/07/27 revised 1.08
- t/Text/Replace.d                                             0.03    2003/07/27 revised 0.02
+ lib/Docs/Site_SVD/Text_Replace.pm                            0.03    2003/09/15 revised 0.02
+ MANIFEST                                                     0.03    2003/09/15 generated, replaces 0.02
+ Makefile.PL                                                  0.03    2003/09/15 generated, replaces 0.02
+ README                                                       0.03    2003/09/15 generated, replaces 0.02
+ lib/Text/Replace.pm                                          1.09    2003/07/27 unchanged
+ t/Text/Replace.d                                             0.01    2003/07/27 unchanged
  t/Text/Replace.pm                                            0.01    2003/07/05 unchanged
- t/Text/Replace.t                                             0.03    2003/07/27 revised 0.02
- tlib/File/Package.pm                                         1.1     2003/07/27 new
- tlib/Test/Tech.pm                                            1.11    2003/07/27 new
+ t/Text/Replace.t                                             0.04    2003/09/15 revised 0.03
+ tlib/File/Package.pm                                         1.12    2003/09/15 revised 1.1
+ tlib/Test/Tech.pm                                            1.13    2003/09/15 revised 1.11
 
 
 =head2 3.3 Changes
@@ -252,6 +252,13 @@ The test of this module will precede immediately.
 The test support files in the tlib directory will vanish after
 the installtion.
 
+=item Text-Replace-0.03
+
+Recreate distribution file 
+with Archive::TarGzip 0.02 that uses mode 777 for directories instead of 666. Started to get
+emails from Unix installers about untar not being able to change to
+a directory with mode of 666.
+
 =back
 
 =head2 3.4 Adaptation data.
@@ -285,8 +292,8 @@ Follow the instructions for the the chosen installation software.
 
 The distribution file is at the following respositories:
 
-   http://www.softwarediamonds/packages/Text-Replace-0.02
-   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/Text-Replace-0.02
+   http://www.softwarediamonds/packages/Text-Replace-0.03
+   http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/Text-Replace-0.03
 
 
 =item Prerequistes.
@@ -402,11 +409,11 @@ __DATA__
 DISTNAME: Text-Replace^
 REPOSITORY_DIR: packages^
 
-VERSION : 0.02^
+VERSION : 0.03^
 FREEZE: 1^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.01^
-REVISION: A^
+PREVIOUS_RELEASE: 0.02^
+REVISION: B^
 
 AUTHOR  : SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>^
 ABSTRACT: Replace variables in templates^
@@ -485,6 +492,13 @@ test of this module.
 The test of this module will precede immediately.
 The test support files in the tlib directory will vanish after
 the installtion.
+
+\=item Text-Replace-0.03
+
+Recreate distribution file 
+with Archive::TarGzip 0.02 that uses mode 777 for directories instead of 666. Started to get
+emails from Unix installers about untar not being able to change to
+a directory with mode of 666.
 
 \=back
 
