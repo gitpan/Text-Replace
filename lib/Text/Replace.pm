@@ -10,7 +10,7 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE);
-$VERSION = '1.11';
+$VERSION = '1.12';
 $DATE = '2004/05/04';
 $FILE = __FILE__;
 
@@ -79,16 +79,18 @@ Test::STD::STDutil - generic functions that support Test::STDmaker
 
 =head1 DESCRIPTION
 
-The C<Text::Replace> program module is simple and plain. 
-This is intentional. The C<Text::Replace> mimics the
+The C<Text::Replace> program module is simple and plain by design.
+The C<Text::Replace> program module mimics the
 built-in Perl double quote, '"', literal scalar that
 replaces Perl scalar variables named with a leading '$'.
-The C<Text::Replace> program module foregoes 
-expressiveness for convenience and performance.
-Like a movie score, it stays in the background.
+The C<Text::Replace> program module stays in the background,
+just like John William's movie scores.
 There is no large manual thicker than the Bible 
 with tricks and tips and gyrations to learn and 
-to distract.
+to distract. The module is plain, simple with
+no expressiveness.
+The C<Text::Replace> program module does only one
+thing: substitute a value for a variable.
 It is amazing how many times, just a simple double quote
 literal replacement in a small string or even
 a large text string gets the job done.
@@ -227,20 +229,19 @@ follow on the next lines as comments. For example,
 
 =head1 QUALITY ASSURANCE
 
-Running the test script C<Repalce.t> verifies
+Running the test script C<Replace.t> verifies
 the requirements for this module.
 The C<tmake.pl> cover script for L<Test::STDmaker|Test::STDmaker>
 automatically generated the
-C<Repalce.t> test script, C<Repalce.d> demo script,
-and C<t::Text::Repalce> program module POD,
-from the C<t::Text::Repalce> program module contents.
+C<Replace.t> test script, C<Replace.d> demo script,
+and C<t::Text::Replace> program module POD,
+from the C<t::Text::Replace> program module contents.
 The C<tmake.pl> cover script automatically ran the
-C<Repalce.d> demo script and inserted the results
+C<Replace.d> demo script and inserted the results
 into the 'DEMONSTRATION' section above.
-The  C<t::Text::Repalce> program module
+The  C<t::Text::Replace> program module
 is in the distribution file
-F<Text-Repalce-$VERSION.tar.gz>.
-=back
+F<Text-Replace-$VERSION.tar.gz>.
 
 =head1 NOTES
 
@@ -309,7 +310,6 @@ OR TORT (INCLUDING USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-
 =head1 SEE ALSO
 
 =over 4
@@ -321,8 +321,6 @@ ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
 =item L<Test::STDmaker|Test::STDmaker>
 
 =item L<ExtUtils::SVDmaker|ExtUtils::SVDmaker> 
-
-=item L
 
 =back
 

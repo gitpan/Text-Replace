@@ -15,15 +15,17 @@ SYNOPSIS
      $success = Text::Replace->replace_variables(\$template, \%variable_hash, \@variable);
 
 DESCRIPTION
-    The "Text::Replace" program module is simple and plain. This is
-    intentional. The "Text::Replace" mimics the built-in Perl double quote,
+    The "Text::Replace" program module is simple and plain by design. The
+    "Text::Replace" program module mimics the built-in Perl double quote,
     '"', literal scalar that replaces Perl scalar variables named with a
-    leading '$'. The "Text::Replace" program module foregoes expressiveness
-    for convenience and performance. Like a movie score, it stays in the
-    background. There is no large manual thicker than the Bible with tricks
-    and tips and gyrations to learn and to distract. It is amazing how many
-    times, just a simple double quote literal replacement in a small string
-    or even a large text string gets the job done.
+    leading '$'. The "Text::Replace" program module stays in the background,
+    just like John William's movie scores. There is no large manual thicker
+    than the Bible with tricks and tips and gyrations to learn and to
+    distract. The module is plain, simple with no expressiveness. The
+    "Text::Replace" program module does only one thing: substitute a value
+    for a variable. It is amazing how many times, just a simple double quote
+    literal replacement in a small string or even a large text string gets
+    the job done.
 
     Does "Text::Replace" solve all variable replacement, template problems?
     Definitely not. There is no capabilities for inserting graphs, text wrap
@@ -153,14 +155,14 @@ DEMONSTRATION
      #
 
 QUALITY ASSURANCE
-    Running the test script "Repalce.t" verifies the requirements for this
+    Running the test script "Replace.t" verifies the requirements for this
     module. The "tmake.pl" cover script for Test::STDmaker automatically
-    generated the "Repalce.t" test script, "Repalce.d" demo script, and
-    "t::Text::Repalce" program module POD, from the "t::Text::Repalce"
+    generated the "Replace.t" test script, "Replace.d" demo script, and
+    "t::Text::Replace" program module POD, from the "t::Text::Replace"
     program module contents. The "tmake.pl" cover script automatically ran
-    the "Repalce.d" demo script and inserted the results into the
-    'DEMONSTRATION' section above. The "t::Text::Repalce" program module is
-    in the distribution file Text-Repalce-$VERSION.tar.gz. =back
+    the "Replace.d" demo script and inserted the results into the
+    'DEMONSTRATION' section above. The "t::Text::Replace" program module is
+    in the distribution file Text-Replace-$VERSION.tar.gz.
 
 NOTES
   Author
@@ -213,7 +215,6 @@ SEE ALSO
     Docs::Site_SVD::Text_Replace
     Test::STDmaker
     ExtUtils::SVDmaker
-    L
 Title Page
      Software Version Description
 
@@ -221,9 +222,9 @@ Title Page
 
      Text::Replace - Replace variables in templates
 
-     Revision: D
+     Revision: E
 
-     Version: 0.05
+     Version: 0.06
 
      Date: 2004/05/04
 
@@ -264,7 +265,7 @@ Title Page
 
   1.3 Document overview.
 
-    This document releases Text::Replace version 0.05 providing a
+    This document releases Text::Replace version 0.06 providing a
     description of the inventory, installation instructions and other
     information necessary to utilize and track this release.
 
@@ -276,7 +277,7 @@ Title Page
 
     This document releases the file
 
-     Text-Replace-0.05.tar.gz
+     Text-Replace-0.06.tar.gz
 
     found at the following repository(s):
 
@@ -326,19 +327,19 @@ Title Page
 
      file                                                         version date       comment
      ------------------------------------------------------------ ------- ---------- ------------------------
-     lib/Docs/Site_SVD/Text_Replace.pm                            0.05    2004/05/04 revised 0.04
-     MANIFEST                                                     0.05    2004/05/04 generated, replaces 0.04
-     Makefile.PL                                                  0.05    2004/05/04 generated, replaces 0.04
-     README                                                       0.05    2004/05/04 generated, replaces 0.04
-     lib/Text/Replace.pm                                          1.11    2004/05/04 revised 1.1
-     t/Text/Replace.t                                             0.05    2004/05/04 revised 0.04
-     t/Text/Replace.pm                                            0.03    2004/05/04 revised 0.02
-     t/Text/Replace.d                                             0.04    2004/05/04 revised 0.03
-     t/Text/File/Package.pm                                       1.16    2004/05/04 new
-     t/Text/Test/Tech.pm                                          1.22    2004/05/04 new
-     t/Text/Data/Secs2.pm                                         1.19    2004/05/04 new
-     t/Text/Data/SecsPack.pm                                      0.04    2004/05/04 new
-     t/Text/Data/Startup.pm                                       0.04    2004/05/04 new
+     lib/Docs/Site_SVD/Text_Replace.pm                            0.06    2004/05/04 revised 0.05
+     MANIFEST                                                     0.06    2004/05/04 generated, replaces 0.05
+     Makefile.PL                                                  0.06    2004/05/04 generated, replaces 0.05
+     README                                                       0.06    2004/05/04 generated, replaces 0.05
+     lib/Text/Replace.pm                                          1.12    2004/05/04 revised 1.11
+     t/Text/Replace.t                                             0.05    2004/05/04 unchanged
+     t/Text/Replace.pm                                            0.03    2004/05/04 unchanged
+     t/Text/Replace.d                                             0.04    2004/05/04 unchanged
+     t/Text/File/Package.pm                                       1.16    2004/05/04 unchanged
+     t/Text/Test/Tech.pm                                          1.22    2004/05/04 unchanged
+     t/Text/Data/Secs2.pm                                         1.19    2004/05/04 unchanged
+     t/Text/Data/SecsPack.pm                                      0.04    2004/05/04 unchanged
+     t/Text/Data/Startup.pm                                       0.04    2004/05/04 unchanged
 
   3.3 Changes
 
@@ -383,11 +384,11 @@ Title Page
         installers about untar not being able to change to a directory with
         mode of 666.
 
-    Text-Column-0.04
+    Text-Replace-0.04
         Add the module 'Data::Secs2' in the tlib that provides 'stringify'
         support for the 'Test::Tech' module.
 
-    Text-Column-0.05
+    Text-Replace-0.05
         The lastest build of "Test::STDmaker" expects the test library in
         the same directory as the test script. Coordiated with the lastest
         Test::STDmaker by moving the test library from tlib to t/Text, the
@@ -397,6 +398,10 @@ Title Page
 
         Added Description, Subroutines, See Also headers. Clean up the
         Quality Assurance and Notes.
+
+    Text-Replace-0.06
+        Broken POD link cause big problems with pod2html. Fixed and run
+        throught podchecker.
 
   3.4 Adaptation data.
 
@@ -430,12 +435,12 @@ Title Page
           http://www.softwarediamonds/packages/
           http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-        Right click on 'Text-Replace-0.05.tar.gz' and download to a
+        Right click on 'Text-Replace-0.06.tar.gz' and download to a
         temporary installation directory. Enter the following where $make is
         'nmake' for microsoft windows; otherwise 'make'.
 
-         gunzip Text-Replace-0.05.tar.gz
-         tar -xf Text-Replace-0.05.tar
+         gunzip Text-Replace-0.06.tar.gz
+         tar -xf Text-Replace-0.06.tar
          perl Makefile.PL
          $make test
          $make install

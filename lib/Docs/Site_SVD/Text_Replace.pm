@@ -10,25 +10,25 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.05';
+$VERSION = '0.06';
 $DATE = '2004/05/04';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/Text_Replace.pm' => [qw(0.05 2004/05/04), 'revised 0.04'],
-    'MANIFEST' => [qw(0.05 2004/05/04), 'generated, replaces 0.04'],
-    'Makefile.PL' => [qw(0.05 2004/05/04), 'generated, replaces 0.04'],
-    'README' => [qw(0.05 2004/05/04), 'generated, replaces 0.04'],
-    'lib/Text/Replace.pm' => [qw(1.11 2004/05/04), 'revised 1.1'],
-    't/Text/Replace.t' => [qw(0.05 2004/05/04), 'revised 0.04'],
-    't/Text/Replace.pm' => [qw(0.03 2004/05/04), 'revised 0.02'],
-    't/Text/Replace.d' => [qw(0.04 2004/05/04), 'revised 0.03'],
-    't/Text/File/Package.pm' => [qw(1.16 2004/05/04), 'new'],
-    't/Text/Test/Tech.pm' => [qw(1.22 2004/05/04), 'new'],
-    't/Text/Data/Secs2.pm' => [qw(1.19 2004/05/04), 'new'],
-    't/Text/Data/SecsPack.pm' => [qw(0.04 2004/05/04), 'new'],
-    't/Text/Data/Startup.pm' => [qw(0.04 2004/05/04), 'new'],
+    'lib/Docs/Site_SVD/Text_Replace.pm' => [qw(0.06 2004/05/04), 'revised 0.05'],
+    'MANIFEST' => [qw(0.06 2004/05/04), 'generated, replaces 0.05'],
+    'Makefile.PL' => [qw(0.06 2004/05/04), 'generated, replaces 0.05'],
+    'README' => [qw(0.06 2004/05/04), 'generated, replaces 0.05'],
+    'lib/Text/Replace.pm' => [qw(1.12 2004/05/04), 'revised 1.11'],
+    't/Text/Replace.t' => [qw(0.05 2004/05/04), 'unchanged'],
+    't/Text/Replace.pm' => [qw(0.03 2004/05/04), 'unchanged'],
+    't/Text/Replace.d' => [qw(0.04 2004/05/04), 'unchanged'],
+    't/Text/File/Package.pm' => [qw(1.16 2004/05/04), 'unchanged'],
+    't/Text/Test/Tech.pm' => [qw(1.22 2004/05/04), 'unchanged'],
+    't/Text/Data/Secs2.pm' => [qw(1.19 2004/05/04), 'unchanged'],
+    't/Text/Data/SecsPack.pm' => [qw(0.04 2004/05/04), 'unchanged'],
+    't/Text/Data/Startup.pm' => [qw(0.04 2004/05/04), 'unchanged'],
 
 );
 
@@ -55,9 +55,9 @@ use vars qw(%INVENTORY);
 
  Text::Replace - Replace variables in templates
 
- Revision: D
+ Revision: E
 
- Version: 0.05
+ Version: 0.06
 
  Date: 2004/05/04
 
@@ -107,7 +107,7 @@ such as the highly rated C<Template> program module.
 
 =head2 1.3 Document overview.
 
-This document releases Text::Replace version 0.05
+This document releases Text::Replace version 0.06
 providing a description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -122,7 +122,7 @@ system file specification.
 
 This document releases the file 
 
- Text-Replace-0.05.tar.gz
+ Text-Replace-0.06.tar.gz
 
 found at the following repository(s):
 
@@ -194,19 +194,19 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/Text_Replace.pm                            0.05    2004/05/04 revised 0.04
- MANIFEST                                                     0.05    2004/05/04 generated, replaces 0.04
- Makefile.PL                                                  0.05    2004/05/04 generated, replaces 0.04
- README                                                       0.05    2004/05/04 generated, replaces 0.04
- lib/Text/Replace.pm                                          1.11    2004/05/04 revised 1.1
- t/Text/Replace.t                                             0.05    2004/05/04 revised 0.04
- t/Text/Replace.pm                                            0.03    2004/05/04 revised 0.02
- t/Text/Replace.d                                             0.04    2004/05/04 revised 0.03
- t/Text/File/Package.pm                                       1.16    2004/05/04 new
- t/Text/Test/Tech.pm                                          1.22    2004/05/04 new
- t/Text/Data/Secs2.pm                                         1.19    2004/05/04 new
- t/Text/Data/SecsPack.pm                                      0.04    2004/05/04 new
- t/Text/Data/Startup.pm                                       0.04    2004/05/04 new
+ lib/Docs/Site_SVD/Text_Replace.pm                            0.06    2004/05/04 revised 0.05
+ MANIFEST                                                     0.06    2004/05/04 generated, replaces 0.05
+ Makefile.PL                                                  0.06    2004/05/04 generated, replaces 0.05
+ README                                                       0.06    2004/05/04 generated, replaces 0.05
+ lib/Text/Replace.pm                                          1.12    2004/05/04 revised 1.11
+ t/Text/Replace.t                                             0.05    2004/05/04 unchanged
+ t/Text/Replace.pm                                            0.03    2004/05/04 unchanged
+ t/Text/Replace.d                                             0.04    2004/05/04 unchanged
+ t/Text/File/Package.pm                                       1.16    2004/05/04 unchanged
+ t/Text/Test/Tech.pm                                          1.22    2004/05/04 unchanged
+ t/Text/Data/Secs2.pm                                         1.19    2004/05/04 unchanged
+ t/Text/Data/SecsPack.pm                                      0.04    2004/05/04 unchanged
+ t/Text/Data/Startup.pm                                       0.04    2004/05/04 unchanged
 
 
 =head2 3.3 Changes
@@ -264,12 +264,12 @@ with Archive::TarGzip 0.02 that uses mode 777 for directories instead of 666. St
 emails from Unix installers about untar not being able to change to
 a directory with mode of 666.
 
-=item Text-Column-0.04
+=item Text-Replace-0.04
 
 Add the module 'Data::Secs2' in the tlib that provides 'stringify' support
 for the 'Test::Tech' module.
 
-=item Text-Column-0.05
+=item Text-Replace-0.05
 
 The lastest build of C<Test::STDmaker> expects the test library in the same
 directory as the test script.
@@ -280,6 +280,11 @@ adding the C<Data::SecsPack> and C<Data::Startup> to the test library.
 
 Added Description, Subroutines, See Also headers. 
 Clean up the Quality Assurance and Notes.
+
+=item Text-Replace-0.06
+
+Broken POD link cause big problems with pod2html. Fixed and run throught podchecker.
+
 
 =back
 
@@ -319,13 +324,13 @@ Enter one of the following repositories in a web browser:
   http://www.softwarediamonds/packages/
   http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-Right click on 'Text-Replace-0.05.tar.gz' and download to a temporary
+Right click on 'Text-Replace-0.06.tar.gz' and download to a temporary
 installation directory.
 Enter the following where $make is 'nmake' for microsoft
 windows; otherwise 'make'.
 
- gunzip Text-Replace-0.05.tar.gz
- tar -xf Text-Replace-0.05.tar
+ gunzip Text-Replace-0.06.tar.gz
+ tar -xf Text-Replace-0.06.tar
  perl Makefile.PL
  $make test
  $make install
@@ -420,11 +425,11 @@ __DATA__
 DISTNAME: Text-Replace^
 REPOSITORY_DIR: packages^
 
-VERSION : 0.05^
-FREEZE: 1^
+VERSION : 0.06^
+FREEZE: 0^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.04^
-REVISION: D^
+PREVIOUS_RELEASE: 0.05^
+REVISION: E^
 
 AUTHOR  : SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>^
 ABSTRACT: Replace variables in templates^
@@ -518,12 +523,12 @@ with Archive::TarGzip 0.02 that uses mode 777 for directories instead of 666. St
 emails from Unix installers about untar not being able to change to
 a directory with mode of 666.
 
-\=item Text-Column-0.04
+\=item Text-Replace-0.04
 
 Add the module 'Data::Secs2' in the tlib that provides 'stringify' support
 for the 'Test::Tech' module.
 
-\=item Text-Column-0.05
+\=item Text-Replace-0.05
 
 The lastest build of C<Test::STDmaker> expects the test library in the same
 directory as the test script.
@@ -534,6 +539,11 @@ adding the C<Data::SecsPack> and C<Data::Startup> to the test library.
 
 Added Description, Subroutines, See Also headers. 
 Clean up the Quality Assurance and Notes.
+
+\=item Text-Replace-0.06
+
+Broken POD link cause big problems with pod2html. Fixed and run throught podchecker.
+
 
 \=back
 
@@ -628,7 +638,6 @@ OR TORT (INCLUDING USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
 ^
-
 
 INSTALLATION:
 To installed the release file, use the CPAN module
