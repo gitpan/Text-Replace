@@ -23,7 +23,7 @@ my $tests = join ' ',unix2os('t/Text/Replace.t');
 WriteMakefile(
     NAME => 'Text::Replace',
     DISTNAME => 'Text-Replace',
-    VERSION  => '0.03',
+    VERSION  => '0.04',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},

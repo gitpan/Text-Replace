@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE);
-$VERSION = '1.09';
-$DATE = '2003/07/27';
+$VERSION = '1.1';
+$DATE = '2003/09/19';
 $FILE = __FILE__;
 
 use vars qw(@ISA @EXPORT_OK);
@@ -25,7 +25,11 @@ require Exporter;
 sub replace_variables
 {
     
-    shift @_ if $_[0] eq 'Text::Replace' || ref($_[0]);  # drop self on object call 
+    ######
+    # This subroutine uses no object data; therefore,
+    # drop any class or object.
+    #
+    shift @_ if UNIVERSAL::isa($_[0],__PACKAGE__);
 
     my ($template_p, $hash_p, $variables_p) = @_;
 
@@ -61,10 +65,15 @@ Test::STD::STDutil - generic functions that support Test::STDmaker
 
 =head1 SYNOPSIS
 
+ ########
+ # Class Interface
+ #
  use Text::Replace;
  $success = Text::Replace->replace_variables(\$template, \%variable_hash, \@variable);
 
-
+ #######
+ # Subroutine Interface
+ #
  use Text::Replace qw(&replace_variables);
  $success = replace_variables(\$template, \%variable_hash, \@variable);
 
@@ -174,26 +183,170 @@ follow on the next lines. For example,
 
  '
 
-
 =head1 QUALITY ASSURANCE
 
-The module "t::Text::Replace" is the Software
-Test Description(STD) module for the "Text::Replace".
-module. 
+Running the test script 'Replace.t' found in
+the "Text-Replace-$VERSION.tar.gz" distribution file verifies
+the requirements for this module.
 
-To generate all the test output files, 
-run the generated test script,
-run the demonstration script and include it results in the "Text::Replace" POD,
+All testing software and documentation
+stems from the 
+Software Test Description (L<STD|Docs::US_DOD::STD>)
+program module 't::Text::Replace',
+found in the distribution file 
+"Text-Replace-$VERSION.tar.gz". 
+
+The 't::Text::Replace' L<STD|Docs::US_DOD::STD> POD contains
+a tracebility matix between the
+requirements established above for this module, and
+the test steps identified by a
+'ok' number from running the 'Replace.t'
+test script.
+
+The t::Text::Replace' L<STD|Docs::US_DOD::STD>
+program module '__DATA__' section contains the data 
+to perform the following:
+
+=over 4
+
+=item *
+
+to generate the test script 'Replace.t'
+
+=item *
+
+generate the tailored 
+L<STD|Docs::US_DOD::STD> POD in
+the 't::Text::Replace' module, 
+
+=item *
+
+generate the 'Replace.d' demo script, 
+
+=item *
+
+replace the POD demonstration section
+herein with the demo script
+'Replace.d' output, and
+
+=item *
+
+run the test script using Test::Harness
+with or without the verbose option,
+
+=back
+
+To perform all the above, prepare
+and run the automation software as 
+follows:
+
+=over 4
+
+=item *
+
+Install "Test_STDmaker-$VERSION.tar.gz"
+from one of the respositories only
+if it has not been installed:
+
+=over 4
+
+=item *
+
+http://www.softwarediamonds/packages/
+
+=item *
+
+http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/
+
+=back
+  
+=item *
+
+manually place the script tmake.pl
+in "Test_STDmaker-$VERSION.tar.gz' in
+the site operating system executable 
+path only if it is not in the 
+executable path
+
+=item *
+
+place the 't::Text::Replace' at the same
+level in the directory struture as the
+directory holding the 'Text::Replace'
+module
+
+=item *
+
 execute the following in any directory:
 
- tmake -verbose -replace -run -pm=t::Text::Replace
+ tmake -test_verbose -replace -run -pm=t::Text::Replace
 
-Note that F<tmake.pl> must be in the execution path C<$ENV{PATH}>
-and the "t" directory containing  "t::Text::Replace" on the same level as 
-the "lib" directory that
-contains the "Text::Replace" module.
+=back
 
 =head1 NOTES
+
+=head2 FILES
+
+The installation of the
+"Text-Replace-$VERSION.tar.gz" distribution file
+installs the 'Docs::Site_SVD::Text_Replace'
+L<SVD|Docs::US_DOD::SVD> program module.
+
+The __DATA__ data section of the 
+'Docs::Site_SVD::Text_Replace' contains all
+the necessary data to generate the POD
+section of 'Docs::Site_SVD::Text_Replace' and
+the "Text-Replace-$VERSION.tar.gz" distribution file.
+
+To make use of the 
+'Docs::Site_SVD::Text_Replace'
+L<SVD|Docs::US_DOD::SVD> program module,
+perform the following:
+
+=over 4
+
+=item *
+
+install "ExtUtils-SVDmaker-$VERSION.tar.gz"
+from one of the respositories only
+if it has not been installed:
+
+=over 4
+
+=item *
+
+http://www.softwarediamonds/packages/
+
+=item *
+
+http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/
+
+=back
+
+=item *
+
+manually place the script vmake.pl
+in "ExtUtils-SVDmaker-$VERSION.tar.gz' in
+the site operating system executable 
+path only if it is not in the 
+executable path
+
+=item *
+
+Make any appropriate changes to the
+__DATA__ section of the 'Docs::Site_SVD::Text_Replace'
+module.
+For example, any changes to
+'Text::Replace' will impact the
+at least 'Changes' field.
+
+=item *
+
+Execute the following:
+
+ vmake readme_html all -pm=Docs::Site_SVD::Text_Replace
+
+=back
 
 =head2 AUTHOR
 
