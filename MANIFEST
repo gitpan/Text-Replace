@@ -6,3 +6,5 @@ lib/Text/Replace.pm
 t/Text/Replace.d
 t/Text/Replace.pm
 t/Text/Replace.t
+tlib/File/Package.pm
+tlib/Test/Tech.pm

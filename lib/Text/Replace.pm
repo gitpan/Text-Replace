@@ -10,17 +10,24 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE);
-$VERSION = '1.08';
-$DATE = '2003/07/05';
+$VERSION = '1.09';
+$DATE = '2003/07/27';
 $FILE = __FILE__;
 
+use vars qw(@ISA @EXPORT_OK);
+require Exporter;
+@ISA=('Exporter');
+@EXPORT_OK = qw(&replace_variables);
 
 #######
 # Replace variables in template
 #
 sub replace_variables
 {
-    my (undef, $template_p, $hash_p, $variables_p) = @_;
+    
+    shift @_ if $_[0] eq 'Text::Replace' || ref($_[0]);  # drop self on object call 
+
+    my ($template_p, $hash_p, $variables_p) = @_;
 
     unless( $variables_p ) {
         my @keys = sort keys %$hash_p;
@@ -54,9 +61,12 @@ Test::STD::STDutil - generic functions that support Test::STDmaker
 
 =head1 SYNOPSIS
 
-  use Text::Replace
+ use Text::Replace;
+ $success = Text::Replace->replace_variables(\$template, \%variable_hash, \@variable);
 
-  $success = Text::Replace->replace_variables( \$template, \%variable_hash, \@variable)
+
+ use Text::Replace qw(&replace_variables);
+ $success = replace_variables(\$template, \%variable_hash, \@variable);
 
 =head1 DESCRIPTION
 
