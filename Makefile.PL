@@ -23,7 +23,7 @@ my $tests = join ' ',unix2os('t/Text/Replace.t');
 WriteMakefile(
     NAME => 'Text::Replace',
     DISTNAME => 'Text-Replace',
-    VERSION  => '0.06',
+    VERSION  => '0.07',
     dist     => {COMPRESS => 'gzip',
                 'gz' => 'gz'},
     test     => {TESTS => $tests},
@@ -32,7 +32,7 @@ WriteMakefile(
 
     ($] >= 5.005 ?     
         (AUTHOR    => 'SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>',
-        ABSTRACT  => 'Replace variables in templates', ) : ()),
+        ABSTRACT  => 'Replace variables from a hash', ) : ()),
 );
 
 

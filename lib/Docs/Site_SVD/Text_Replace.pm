@@ -10,25 +10,25 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE );
-$VERSION = '0.06';
-$DATE = '2004/05/04';
+$VERSION = '0.07';
+$DATE = '2004/05/11';
 $FILE = __FILE__;
 
 use vars qw(%INVENTORY);
 %INVENTORY = (
-    'lib/Docs/Site_SVD/Text_Replace.pm' => [qw(0.06 2004/05/04), 'revised 0.05'],
-    'MANIFEST' => [qw(0.06 2004/05/04), 'generated, replaces 0.05'],
-    'Makefile.PL' => [qw(0.06 2004/05/04), 'generated, replaces 0.05'],
-    'README' => [qw(0.06 2004/05/04), 'generated, replaces 0.05'],
-    'lib/Text/Replace.pm' => [qw(1.12 2004/05/04), 'revised 1.11'],
+    'lib/Docs/Site_SVD/Text_Replace.pm' => [qw(0.07 2004/05/11), 'revised 0.06'],
+    'MANIFEST' => [qw(0.07 2004/05/11), 'generated, replaces 0.06'],
+    'Makefile.PL' => [qw(0.07 2004/05/11), 'generated, replaces 0.06'],
+    'README' => [qw(0.07 2004/05/11), 'generated, replaces 0.06'],
+    'lib/Text/Replace.pm' => [qw(1.13 2004/05/11), 'revised 1.12'],
     't/Text/Replace.t' => [qw(0.05 2004/05/04), 'unchanged'],
     't/Text/Replace.pm' => [qw(0.03 2004/05/04), 'unchanged'],
     't/Text/Replace.d' => [qw(0.04 2004/05/04), 'unchanged'],
-    't/Text/File/Package.pm' => [qw(1.16 2004/05/04), 'unchanged'],
-    't/Text/Test/Tech.pm' => [qw(1.22 2004/05/04), 'unchanged'],
-    't/Text/Data/Secs2.pm' => [qw(1.19 2004/05/04), 'unchanged'],
-    't/Text/Data/SecsPack.pm' => [qw(0.04 2004/05/04), 'unchanged'],
-    't/Text/Data/Startup.pm' => [qw(0.04 2004/05/04), 'unchanged'],
+    't/Text/File/Package.pm' => [qw(1.17 2004/05/11), 'revised 1.16'],
+    't/Text/Test/Tech.pm' => [qw(1.24 2004/05/11), 'revised 1.22'],
+    't/Text/Data/Secs2.pm' => [qw(1.22 2004/05/11), 'revised 1.19'],
+    't/Text/Data/SecsPack.pm' => [qw(0.07 2004/05/11), 'revised 0.04'],
+    't/Text/Data/Startup.pm' => [qw(0.06 2004/05/11), 'revised 0.04'],
 
 );
 
@@ -47,25 +47,29 @@ use vars qw(%INVENTORY);
 
 
 
+=head1 NAME
+
+Text::Replace - replace variables from a hash
+
 =head1 Title Page
 
  Software Version Description
 
  for
 
- Text::Replace - Replace variables in templates
+ Text::Replace - replace variables from a hash
 
- Revision: E
+ Revision: F
 
- Version: 0.06
+ Version: 0.07
 
- Date: 2004/05/04
+ Date: 2004/05/11
 
  Prepared for: General Public 
 
  Prepared by:  SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>
 
- Copyright: copyright © 2003 Software Diamonds
+ Copyright: copyright 2003 Software Diamonds
 
  Classification: NONE
 
@@ -107,7 +111,7 @@ such as the highly rated C<Template> program module.
 
 =head2 1.3 Document overview.
 
-This document releases Text::Replace version 0.06
+This document releases Text::Replace version 0.07
 providing a description of the inventory, installation
 instructions and other information necessary to
 utilize and track this release.
@@ -122,7 +126,7 @@ system file specification.
 
 This document releases the file 
 
- Text-Replace-0.06.tar.gz
+ Text-Replace-0.07.tar.gz
 
 found at the following repository(s):
 
@@ -136,7 +140,7 @@ are as follows:
 
 =item Copyright.
 
-copyright © 2003 Software Diamonds
+copyright 2003 Software Diamonds
 
 =item Copyright holder contact.
 
@@ -166,6 +170,21 @@ disclaimer in the documentation and/or
 other materials provided with the
 distribution.
 
+=item 3
+
+Commercial installation of the binary or source
+must visually present to the installer 
+the above copyright notice,
+this list of conditions intact,
+that the original source is available
+at http://softwarediamonds.com
+and provide means
+for the installer to actively accept
+the list of conditions; 
+otherwise, a license fee must be paid to
+Softwareware Diamonds.
+
+
 =back
 
 SOFTWARE DIAMONDS, http://www.SoftwareDiamonds.com,
@@ -194,19 +213,19 @@ consists of the following files:
 
  file                                                         version date       comment
  ------------------------------------------------------------ ------- ---------- ------------------------
- lib/Docs/Site_SVD/Text_Replace.pm                            0.06    2004/05/04 revised 0.05
- MANIFEST                                                     0.06    2004/05/04 generated, replaces 0.05
- Makefile.PL                                                  0.06    2004/05/04 generated, replaces 0.05
- README                                                       0.06    2004/05/04 generated, replaces 0.05
- lib/Text/Replace.pm                                          1.12    2004/05/04 revised 1.11
+ lib/Docs/Site_SVD/Text_Replace.pm                            0.07    2004/05/11 revised 0.06
+ MANIFEST                                                     0.07    2004/05/11 generated, replaces 0.06
+ Makefile.PL                                                  0.07    2004/05/11 generated, replaces 0.06
+ README                                                       0.07    2004/05/11 generated, replaces 0.06
+ lib/Text/Replace.pm                                          1.13    2004/05/11 revised 1.12
  t/Text/Replace.t                                             0.05    2004/05/04 unchanged
  t/Text/Replace.pm                                            0.03    2004/05/04 unchanged
  t/Text/Replace.d                                             0.04    2004/05/04 unchanged
- t/Text/File/Package.pm                                       1.16    2004/05/04 unchanged
- t/Text/Test/Tech.pm                                          1.22    2004/05/04 unchanged
- t/Text/Data/Secs2.pm                                         1.19    2004/05/04 unchanged
- t/Text/Data/SecsPack.pm                                      0.04    2004/05/04 unchanged
- t/Text/Data/Startup.pm                                       0.04    2004/05/04 unchanged
+ t/Text/File/Package.pm                                       1.17    2004/05/11 revised 1.16
+ t/Text/Test/Tech.pm                                          1.24    2004/05/11 revised 1.22
+ t/Text/Data/Secs2.pm                                         1.22    2004/05/11 revised 1.19
+ t/Text/Data/SecsPack.pm                                      0.07    2004/05/11 revised 0.04
+ t/Text/Data/Startup.pm                                       0.06    2004/05/11 revised 0.04
 
 
 =head2 3.3 Changes
@@ -285,6 +304,9 @@ Clean up the Quality Assurance and Notes.
 
 Broken POD link cause big problems with pod2html. Fixed and run throught podchecker.
 
+=item Text-Replace-0.07
+
+Had the wrong name in POD NAME section. Fixed.
 
 =back
 
@@ -324,13 +346,13 @@ Enter one of the following repositories in a web browser:
   http://www.softwarediamonds/packages/
   http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
-Right click on 'Text-Replace-0.06.tar.gz' and download to a temporary
+Right click on 'Text-Replace-0.07.tar.gz' and download to a temporary
 installation directory.
 Enter the following where $make is 'nmake' for microsoft
 windows; otherwise 'make'.
 
- gunzip Text-Replace-0.06.tar.gz
- tar -xf Text-Replace-0.06.tar
+ gunzip Text-Replace-0.07.tar.gz
+ tar -xf Text-Replace-0.07.tar
  perl Makefile.PL
  $make test
  $make install
@@ -425,17 +447,17 @@ __DATA__
 DISTNAME: Text-Replace^
 REPOSITORY_DIR: packages^
 
-VERSION : 0.06^
-FREEZE: 0^
+VERSION : 0.07^
+FREEZE: 1^
 PREVIOUS_DISTNAME:  ^
-PREVIOUS_RELEASE: 0.05^
-REVISION: E^
+PREVIOUS_RELEASE: 0.06^
+REVISION: F^
 
 AUTHOR  : SoftwareDiamonds.com E<lt>support@SoftwareDiamonds.comE<gt>^
-ABSTRACT: Replace variables in templates^
-TITLE   : Text::Replace - Replace variables in templates^
+ABSTRACT: Replace variables from a hash^
+TITLE   : Text::Replace - replace variables from a hash^
 END_USER: General Public^
-COPYRIGHT: copyright © 2003 Software Diamonds^
+COPYRIGHT: copyright 2003 Software Diamonds^
 CLASSIFICATION: NONE^
 TEMPLATE:  ^
 CSS: help.css^
@@ -544,6 +566,9 @@ Clean up the Quality Assurance and Notes.
 
 Broken POD link cause big problems with pod2html. Fixed and run throught podchecker.
 
+\=item Text-Replace-0.07
+
+Had the wrong name in POD NAME section. Fixed.
 
 \=back
 
@@ -618,6 +643,21 @@ this list of conditions and the following
 disclaimer in the documentation and/or
 other materials provided with the
 distribution.
+
+\=item 3
+
+Commercial installation of the binary or source
+must visually present to the installer 
+the above copyright notice,
+this list of conditions intact,
+that the original source is available
+at http://softwarediamonds.com
+and provide means
+for the installer to actively accept
+the list of conditions; 
+otherwise, a license fee must be paid to
+Softwareware Diamonds.
+
 
 \=back
 
@@ -695,7 +735,8 @@ extension for a Perl test script file
 
 ^
 
-SEE_ALSO: 
+SEE_ALSO:
+
 \=over 4
 
 \=item L<Text::Replace|Text::Replace> 
@@ -711,5 +752,11 @@ HTML:
 
 ^
 ~-~
+
+
+
+
+
+
 
 
