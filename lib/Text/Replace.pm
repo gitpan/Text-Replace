@@ -10,8 +10,8 @@ use warnings;
 use warnings::register;
 
 use vars qw($VERSION $DATE $FILE);
-$VERSION = '1.1';
-$DATE = '2003/09/19';
+$VERSION = '1.11';
+$DATE = '2004/05/04';
 $FILE = __FILE__;
 
 use vars qw(@ISA @EXPORT_OK);
@@ -65,312 +65,208 @@ Test::STD::STDutil - generic functions that support Test::STDmaker
 
 =head1 SYNOPSIS
 
- ########
- # Class Interface
- #
- use Text::Replace;
- $success = Text::Replace->replace_variables(\$template, \%variable_hash, \@variable);
-
  #######
  # Subroutine Interface
  #
  use Text::Replace qw(&replace_variables);
  $success = replace_variables(\$template, \%variable_hash, \@variable);
 
+ ########
+ # Class Interface
+ #
+ use Text::Replace;
+ $success = Text::Replace->replace_variables(\$template, \%variable_hash, \@variable);
+
 =head1 DESCRIPTION
 
-Coming soon.
+The C<Text::Replace> program module is simple and plain. 
+This is intentional. The C<Text::Replace> mimics the
+built-in Perl double quote, '"', literal scalar that
+replaces Perl scalar variables named with a leading '$'.
+The C<Text::Replace> program module foregoes 
+expressiveness for convenience and performance.
+Like a movie score, it stays in the background.
+There is no large manual thicker than the Bible 
+with tricks and tips and gyrations to learn and 
+to distract.
+It is amazing how many times, just a simple double quote
+literal replacement in a small string or even
+a large text string gets the job done.
+
+Does C<Text::Replace> solve all variable replacement, template
+problems? Definitely not.
+There is no capabilities for inserting graphs, text wrap plug-ins,
+GD interface.
+If an application needs something this sophisticated,
+there are many fine template program modules in CPAN
+such as the highly rated C<Template> program module.
+
+=head1 SUBROUTINES
+
+=head2 replace_variables
+
+The C<replace_variables> subroutine, takes a C<\$template> reference containing
+Perl scalar variables, always named the leading I<funny character> '$', 
+and recursively looks up the value for the scalar variables in the 
+C<\%variable_hash> and replaces the value in the C<\$template>.
+The C<replace_variables> subroutine only replaces those variables
+in the C<\@variable> list.
 
 =head1 REQUIREMENTS
 
-Coming soon.
+Some day.
 
 =head1 DEMONSTRATION
 
- ~~~~~~ Demonstration overview ~~~~~
+ #########
+ # perl Replace.d
+ ###
 
-Perl code begins with the prompt
+~~~~~~ Demonstration overview ~~~~~
 
- =>
+The results from executing the Perl Code 
+follow on the next lines as comments. For example,
 
-The selected results from executing the Perl Code 
-follow on the next lines. For example,
+ 2 + 2
+ # 4
 
- => 2 + 2
- 4
+~~~~~~ The demonstration follows ~~~~~
 
- ~~~~~~ The demonstration follows ~~~~~
+     use File::Spec;
 
- =>     use File::Spec;
+     use File::Package;
+     my $fp = 'File::Package';
 
- =>     use File::Package;
- =>     my $fp = 'File::Package';
+     my $tr = 'Text::Replace';
 
- =>     my $tr = 'Text::Replace';
+     my $loaded = '';
+     my $template = '';
+     my %variables = ();
+     my $expected = '';
 
- =>     my $loaded = '';
- =>     my $template = '';
- =>     my %variables = ();
- =>     my $expected = '';
- => my $errors = $fp->load_package($tr)
- => $errors
- ''
+ ##################
+ # Load UUT
+ # 
 
- =>  
+ my $errors = $fp->load_package($tr)
+ $errors
 
- => $template = << 'EOF';
- => =head1 Title Page
+ # ''
+ #
 
- =>  Software Version Description
+ ##################
+ # replace variables
+ # 
 
- =>  for
-
- =>  ${TITLE}
-
- =>  Revision: ${REVISION}
-
- =>  Version: ${VERSION}
-
- =>  Date: ${DATE}
-
- =>  Prepared for: ${END_USER} 
-
- =>  Prepared by:  ${AUTHOR}
-
- =>  Copyright: ${COPYRIGHT}
-
- =>  Classification: ${CLASSIFICATION}
-
- => =cut
-
- => EOF
-
- => %variables = (
- =>    TITLE => 'SVDmaker',
- =>    REVISION => '-',
- =>    VERSION => '0.01',
- =>    DATE => '1969/5/6',
- =>    END_USER => 'General Public',
- =>    AUTHOR => 'Software Diamonds',
- =>    COPYRIGHT => 'none',
- =>    CLASSIFICATION => 'none');
-
- => $tr->replace_variables( \$template, \%variables );
- => $template
- '=head1 Title Page
+ $template = << 'EOF';
+ =head1 Title Page
 
   Software Version Description
 
   for
 
-  SVDmaker
+  ${TITLE}
 
-  Revision: -
+  Revision: ${REVISION}
 
-  Version: 0.01
+  Version: ${VERSION}
 
-  Date: 1969/5/6
+  Date: ${DATE}
 
-  Prepared for: General Public 
+  Prepared for: ${END_USER} 
 
-  Prepared by:  Software Diamonds
+  Prepared by:  ${AUTHOR}
 
-  Copyright: none
+  Copyright: ${COPYRIGHT}
 
-  Classification: none
+  Classification: ${CLASSIFICATION}
 
  =cut
 
- '
+ EOF
+
+ %variables = (
+    TITLE => 'SVDmaker',
+    REVISION => '-',
+    VERSION => '0.01',
+    DATE => '1969/5/6',
+    END_USER => 'General Public',
+    AUTHOR => 'Software Diamonds',
+    COPYRIGHT => 'none',
+    CLASSIFICATION => 'none');
+
+ $tr->replace_variables( \$template, \%variables );
+ $template
+
+ # '=head1 Title Page
+
+ # Software Version Description
+
+ # for
+
+ # SVDmaker
+
+ # Revision: -
+
+ # Version: 0.01
+
+ # Date: 1969/5/6
+
+ # Prepared for: General Public 
+
+ # Prepared by:  Software Diamonds
+
+ # Copyright: none
+
+ # Classification: none
+
+ #=cut
+
+ #'
+ #
 
 =head1 QUALITY ASSURANCE
 
-Running the test script 'Replace.t' found in
-the "Text-Replace-$VERSION.tar.gz" distribution file verifies
+Running the test script C<Repalce.t> verifies
 the requirements for this module.
-
-All testing software and documentation
-stems from the 
-Software Test Description (L<STD|Docs::US_DOD::STD>)
-program module 't::Text::Replace',
-found in the distribution file 
-"Text-Replace-$VERSION.tar.gz". 
-
-The 't::Text::Replace' L<STD|Docs::US_DOD::STD> POD contains
-a tracebility matix between the
-requirements established above for this module, and
-the test steps identified by a
-'ok' number from running the 'Replace.t'
-test script.
-
-The t::Text::Replace' L<STD|Docs::US_DOD::STD>
-program module '__DATA__' section contains the data 
-to perform the following:
-
-=over 4
-
-=item *
-
-to generate the test script 'Replace.t'
-
-=item *
-
-generate the tailored 
-L<STD|Docs::US_DOD::STD> POD in
-the 't::Text::Replace' module, 
-
-=item *
-
-generate the 'Replace.d' demo script, 
-
-=item *
-
-replace the POD demonstration section
-herein with the demo script
-'Replace.d' output, and
-
-=item *
-
-run the test script using Test::Harness
-with or without the verbose option,
-
-=back
-
-To perform all the above, prepare
-and run the automation software as 
-follows:
-
-=over 4
-
-=item *
-
-Install "Test_STDmaker-$VERSION.tar.gz"
-from one of the respositories only
-if it has not been installed:
-
-=over 4
-
-=item *
-
-http://www.softwarediamonds/packages/
-
-=item *
-
-http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/
-
-=back
-  
-=item *
-
-manually place the script tmake.pl
-in "Test_STDmaker-$VERSION.tar.gz' in
-the site operating system executable 
-path only if it is not in the 
-executable path
-
-=item *
-
-place the 't::Text::Replace' at the same
-level in the directory struture as the
-directory holding the 'Text::Replace'
-module
-
-=item *
-
-execute the following in any directory:
-
- tmake -test_verbose -replace -run -pm=t::Text::Replace
-
+The C<tmake.pl> cover script for L<Test::STDmaker|Test::STDmaker>
+automatically generated the
+C<Repalce.t> test script, C<Repalce.d> demo script,
+and C<t::Text::Repalce> program module POD,
+from the C<t::Text::Repalce> program module contents.
+The C<tmake.pl> cover script automatically ran the
+C<Repalce.d> demo script and inserted the results
+into the 'DEMONSTRATION' section above.
+The  C<t::Text::Repalce> program module
+is in the distribution file
+F<Text-Repalce-$VERSION.tar.gz>.
 =back
 
 =head1 NOTES
 
-=head2 FILES
-
-The installation of the
-"Text-Replace-$VERSION.tar.gz" distribution file
-installs the 'Docs::Site_SVD::Text_Replace'
-L<SVD|Docs::US_DOD::SVD> program module.
-
-The __DATA__ data section of the 
-'Docs::Site_SVD::Text_Replace' contains all
-the necessary data to generate the POD
-section of 'Docs::Site_SVD::Text_Replace' and
-the "Text-Replace-$VERSION.tar.gz" distribution file.
-
-To make use of the 
-'Docs::Site_SVD::Text_Replace'
-L<SVD|Docs::US_DOD::SVD> program module,
-perform the following:
-
-=over 4
-
-=item *
-
-install "ExtUtils-SVDmaker-$VERSION.tar.gz"
-from one of the respositories only
-if it has not been installed:
-
-=over 4
-
-=item *
-
-http://www.softwarediamonds/packages/
-
-=item *
-
-http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/
-
-=back
-
-=item *
-
-manually place the script vmake.pl
-in "ExtUtils-SVDmaker-$VERSION.tar.gz' in
-the site operating system executable 
-path only if it is not in the 
-executable path
-
-=item *
-
-Make any appropriate changes to the
-__DATA__ section of the 'Docs::Site_SVD::Text_Replace'
-module.
-For example, any changes to
-'Text::Replace' will impact the
-at least 'Changes' field.
-
-=item *
-
-Execute the following:
-
- vmake readme_html all -pm=Docs::Site_SVD::Text_Replace
-
-=back
-
-=head2 AUTHOR
+=head2 Author 
 
 The holder of the copyright and maintainer is
 
 E<lt>support@SoftwareDiamonds.comE<gt>
 
-=head2 COPYRIGHT NOTICE
+=head2 Copyright Notice
 
 Copyrighted (c) 2002 Software Diamonds
 
 All Rights Reserved
 
-=head2 BINDING REQUIREMENTS NOTICE
+=head2 Binding Requirements
 
 Binding requirements are indexed with the
 pharse 'shall[dd]' where dd is an unique number
 for each header section.
 This conforms to standard federal
-government practices, 490A (L<STD490A/3.2.3.6>).
+government practices, L<STD490A 3.2.3.6|Docs::US_DOD::STD490A/3.2.3.6>.
 In accordance with the License, Software Diamonds
 is not liable for any requirement, binding or otherwise.
 
-=head2 LICENSE
+=head2 License
 
 Software Diamonds permits the redistribution
 and use in source and binary forms, with or
@@ -396,7 +292,7 @@ distribution.
 
 =back
 
-SOFTWARE DIAMONDS, http::www.softwarediamonds.com,
+SOFTWARE DIAMONDS, http://www.softwarediamonds.com,
 PROVIDES THIS SOFTWARE 
 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -413,23 +309,22 @@ OR TORT (INCLUDING USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF NEGLIGENCE OR OTHERWISE) ARISING IN
 ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-=for html
-<p><br>
-<!-- BLK ID="NOTICE" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="OPT-IN" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="EMAIL" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="COPYRIGHT" -->
-<!-- /BLK -->
-<p><br>
-<!-- BLK ID="LOG_CGI" -->
-<!-- /BLK -->
-<p><br>
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Template|Template>
+
+=item L<Docs::Site_SVD::Text_Replace|Docs::Site_SVD::Text_Replace>
+
+=item L<Test::STDmaker|Test::STDmaker>
+
+=item L<ExtUtils::SVDmaker|ExtUtils::SVDmaker> 
+
+=item L
+
+=back
 
 =cut
 

@@ -1,3 +1,219 @@
+NAME
+    Test::STD::STDutil - generic functions that support Test::STDmaker
+
+SYNOPSIS
+     #######
+     # Subroutine Interface
+     #
+     use Text::Replace qw(&replace_variables);
+     $success = replace_variables(\$template, \%variable_hash, \@variable);
+
+     ########
+     # Class Interface
+     #
+     use Text::Replace;
+     $success = Text::Replace->replace_variables(\$template, \%variable_hash, \@variable);
+
+DESCRIPTION
+    The "Text::Replace" program module is simple and plain. This is
+    intentional. The "Text::Replace" mimics the built-in Perl double quote,
+    '"', literal scalar that replaces Perl scalar variables named with a
+    leading '$'. The "Text::Replace" program module foregoes expressiveness
+    for convenience and performance. Like a movie score, it stays in the
+    background. There is no large manual thicker than the Bible with tricks
+    and tips and gyrations to learn and to distract. It is amazing how many
+    times, just a simple double quote literal replacement in a small string
+    or even a large text string gets the job done.
+
+    Does "Text::Replace" solve all variable replacement, template problems?
+    Definitely not. There is no capabilities for inserting graphs, text wrap
+    plug-ins, GD interface. If an application needs something this
+    sophisticated, there are many fine template program modules in CPAN such
+    as the highly rated "Template" program module.
+
+SUBROUTINES
+  replace_variables
+
+    The "replace_variables" subroutine, takes a "\$template" reference
+    containing Perl scalar variables, always named the leading *funny
+    character* '$', and recursively looks up the value for the scalar
+    variables in the "\%variable_hash" and replaces the value in the
+    "\$template". The "replace_variables" subroutine only replaces those
+    variables in the "\@variable" list.
+
+REQUIREMENTS
+    Some day.
+
+DEMONSTRATION
+     #########
+     # perl Replace.d
+     ###
+
+    ~~~~~~ Demonstration overview ~~~~~
+
+    The results from executing the Perl Code follow on the next lines as
+    comments. For example,
+
+     2 + 2
+     # 4
+
+    ~~~~~~ The demonstration follows ~~~~~
+
+         use File::Spec;
+
+         use File::Package;
+         my $fp = 'File::Package';
+
+         my $tr = 'Text::Replace';
+
+         my $loaded = '';
+         my $template = '';
+         my %variables = ();
+         my $expected = '';
+
+     ##################
+     # Load UUT
+     # 
+
+     my $errors = $fp->load_package($tr)
+     $errors
+
+     # ''
+     #
+
+     ##################
+     # replace variables
+     # 
+
+     $template = << 'EOF';
+     =head1 Title Page
+
+      Software Version Description
+
+      for
+
+      ${TITLE}
+
+      Revision: ${REVISION}
+
+      Version: ${VERSION}
+
+      Date: ${DATE}
+
+      Prepared for: ${END_USER} 
+
+      Prepared by:  ${AUTHOR}
+
+      Copyright: ${COPYRIGHT}
+
+      Classification: ${CLASSIFICATION}
+
+     =cut
+
+     EOF
+
+     %variables = (
+        TITLE => 'SVDmaker',
+        REVISION => '-',
+        VERSION => '0.01',
+        DATE => '1969/5/6',
+        END_USER => 'General Public',
+        AUTHOR => 'Software Diamonds',
+        COPYRIGHT => 'none',
+        CLASSIFICATION => 'none');
+
+     $tr->replace_variables( \$template, \%variables );
+     $template
+
+     # '=head1 Title Page
+
+     # Software Version Description
+
+     # for
+
+     # SVDmaker
+
+     # Revision: -
+
+     # Version: 0.01
+
+     # Date: 1969/5/6
+
+     # Prepared for: General Public 
+
+     # Prepared by:  Software Diamonds
+
+     # Copyright: none
+
+     # Classification: none
+
+     #=cut
+
+     #'
+     #
+
+QUALITY ASSURANCE
+    Running the test script "Repalce.t" verifies the requirements for this
+    module. The "tmake.pl" cover script for Test::STDmaker automatically
+    generated the "Repalce.t" test script, "Repalce.d" demo script, and
+    "t::Text::Repalce" program module POD, from the "t::Text::Repalce"
+    program module contents. The "tmake.pl" cover script automatically ran
+    the "Repalce.d" demo script and inserted the results into the
+    'DEMONSTRATION' section above. The "t::Text::Repalce" program module is
+    in the distribution file Text-Repalce-$VERSION.tar.gz. =back
+
+NOTES
+  Author
+
+    The holder of the copyright and maintainer is
+
+    <support@SoftwareDiamonds.com>
+
+  Copyright Notice
+
+    Copyrighted (c) 2002 Software Diamonds
+
+    All Rights Reserved
+
+  Binding Requirements
+
+    Binding requirements are indexed with the pharse 'shall[dd]' where dd is
+    an unique number for each header section. This conforms to standard
+    federal government practices, STD490A 3.2.3.6. In accordance with the
+    License, Software Diamonds is not liable for any requirement, binding or
+    otherwise.
+
+  License
+
+    Software Diamonds permits the redistribution and use in source and
+    binary forms, with or without modification, provided that the following
+    conditions are met:
+
+    1   Redistributions of source code must retain the above copyright
+        notice, this list of conditions and the following disclaimer.
+
+    2   Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution.
+
+    SOFTWARE DIAMONDS, http://www.softwarediamonds.com, PROVIDES THIS
+    SOFTWARE 'AS IS' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+    NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SOFTWARE
+    DIAMONDS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+    SPECIAL,EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+    TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,DATA, OR
+    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING USE
+    OF THIS SOFTWARE, EVEN IF ADVISED OF NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE POSSIBILITY OF SUCH DAMAGE.
+
+SEE ALSO
+    Template
+    Docs::Site_SVD::Text_Replace
+    Test::STDmaker
+    ExtUtils::SVDmaker
+    L
 Title Page
      Software Version Description
 
@@ -5,11 +221,11 @@ Title Page
 
      Text::Replace - Replace variables in templates
 
-     Revision: C
+     Revision: D
 
-     Version: 0.04
+     Version: 0.05
 
-     Date: 2003/09/19
+     Date: 2004/05/04
 
      Prepared for: General Public 
 
@@ -24,35 +240,31 @@ Title Page
     files.
 
   1.1 Identification
+
     This release, identified in 3.2, is a collection of Perl modules that
     extend the capabilities of the Perl language.
 
   1.2 System overview
-    The "Text::Replace" module, extends the Perl language (the system).
 
-    The US DOD 2167A software development standard creates and cites a fully
-    decent number of Data Item Descriptions (DID). A DID and US DOD 490A,
-    Specification Practices, specify in great detail the paragraph number,
-    headings and the information required for each paragraph in the document
-    govern by the DID.
+    The "Text::Replace" program module is simple and plain. This is
+    intentional. The "Text::Replace" mimics the built-in Perl double quote,
+    '"', literal scalar that replaces Perl scalar variables named with a
+    leading '$'. The "Text::Replace" program module foregoes expressiveness
+    for convenience and performance. Like a movie score, it stays in the
+    background. There is no large manual thicker than the Bible with tricks
+    and tips and gyrations to learn and to distract. It is amazing how many
+    times, just a simple double quote literal replacement in a small text
+    string or even a large text string gets the job done.
 
-    The usually approach is for suppliers of the DIDs to set up templates
-    and fill in the template with the missing information to complete the
-    DID document.
-
-    Different organizations use different degrees of automation. Some will
-    have hard copy templates. Some will use word processor templates. Others
-    will use Visual Basic to merge database information into a template.
-
-    The methods in this module support a Perl automation of this processes
-    by merging a hash of variables with a template.
-
-    Replacement of variables in a template has many others uses beside
-    filling out technical document templates such as merging mailing list
-    with emails or form letters.
+    Does "Text::Replace" solve all variable replacement, template problems?
+    Definitely not. There is no capabilities for inserting graphs, text wrap
+    plug-ins, GD interface. If an application needs something this
+    sophisticated, there are many fine template program modules in CPAN such
+    as the highly rated "Template" program module.
 
   1.3 Document overview.
-    This document releases Text::Replace version 0.04 providing a
+
+    This document releases Text::Replace version 0.05 providing a
     description of the inventory, installation instructions and other
     information necessary to utilize and track this release.
 
@@ -61,10 +273,15 @@ Title Page
     specification.
 
   3.1 Inventory of materials released.
-    This document releases the file found at the following repository(s):
 
-       http://www.softwarediamonds/packages/Text-Replace-0.04
-       http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/Text-Replace-0.04
+    This document releases the file
+
+     Text-Replace-0.05.tar.gz
+
+    found at the following repository(s):
+
+      http://www.softwarediamonds/packages/
+      http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
 
     Restrictions regarding duplication and license provisions are as
     follows:
@@ -103,28 +320,31 @@ Title Page
         OF SUCH DAMAGE.
 
   3.2 Inventory of software contents
+
     The content of the released, compressed, archieve file, consists of the
     following files:
 
      file                                                         version date       comment
      ------------------------------------------------------------ ------- ---------- ------------------------
-     lib/Docs/Site_SVD/Text_Replace.pm                            0.04    2003/09/19 revised 0.03
-     MANIFEST                                                     0.04    2003/09/19 generated, replaces 0.03
-     Makefile.PL                                                  0.04    2003/09/19 generated, replaces 0.03
-     README                                                       0.04    2003/09/19 generated, replaces 0.03
-     lib/Text/Replace.pm                                          1.1     2003/09/19 revised 1.09
-     t/Text/Replace.t                                             0.04    2003/09/15 unchanged
-     t/Text/Replace.pm                                            0.01    2003/07/05 unchanged
-     t/Text/Replace.d                                             0.01    2003/07/27 unchanged
-     tlib/File/Package.pm                                         1.12    2003/09/19 unchanged
-     tlib/Test/Tech.pm                                            1.14    2003/09/19 revised 1.13
-     tlib/Data/Secs2.pm                                           1.14    2003/09/19 new
+     lib/Docs/Site_SVD/Text_Replace.pm                            0.05    2004/05/04 revised 0.04
+     MANIFEST                                                     0.05    2004/05/04 generated, replaces 0.04
+     Makefile.PL                                                  0.05    2004/05/04 generated, replaces 0.04
+     README                                                       0.05    2004/05/04 generated, replaces 0.04
+     lib/Text/Replace.pm                                          1.11    2004/05/04 revised 1.1
+     t/Text/Replace.t                                             0.05    2004/05/04 revised 0.04
+     t/Text/Replace.pm                                            0.03    2004/05/04 revised 0.02
+     t/Text/Replace.d                                             0.04    2004/05/04 revised 0.03
+     t/Text/File/Package.pm                                       1.16    2004/05/04 new
+     t/Text/Test/Tech.pm                                          1.22    2004/05/04 new
+     t/Text/Data/Secs2.pm                                         1.19    2004/05/04 new
+     t/Text/Data/SecsPack.pm                                      0.04    2004/05/04 new
+     t/Text/Data/Startup.pm                                       0.04    2004/05/04 new
 
   3.3 Changes
+
     Changes are as follows:
 
     Test-STD-STDutil-0.01
-
         Rename Module
             At 02:44 AM 6/14/2003 +0200, Max Maischein wrote: A second thing
             that I would like you to reconsider is the naming of
@@ -167,7 +387,19 @@ Title Page
         Add the module 'Data::Secs2' in the tlib that provides 'stringify'
         support for the 'Test::Tech' module.
 
+    Text-Column-0.05
+        The lastest build of "Test::STDmaker" expects the test library in
+        the same directory as the test script. Coordiated with the lastest
+        Test::STDmaker by moving the test library from tlib to t/Text, the
+        same directory as the test script and deleting the test library
+        "File::TestPath" program module, adding the "Data::SecsPack" and
+        "Data::Startup" to the test library.
+
+        Added Description, Subroutines, See Also headers. Clean up the
+        Quality Assurance and Notes.
+
   3.4 Adaptation data.
+
     This installation requires that the installation site has the Perl
     programming language installed. There are no other additional
     requirements or tailoring needed of configurations files, adaptation
@@ -175,25 +407,44 @@ Title Page
     installation site.
 
   3.5 Related documents.
+
     There are no related documents needed for the installation and test of
     this release.
 
   3.6 Installation instructions.
+
     Instructions for installation, installation tests and installation
     support are as follows:
 
     Installation Instructions.
-        To installed the release file, use the CPAN module in the Perl
-        release or the INSTALL.PL script at the following web site:
+        To installed the release file, use the CPAN module pr PPM module in
+        the Perl release or the INSTALL.PL script at the following web site:
 
          http://packages.SoftwareDiamonds.com
 
         Follow the instructions for the the chosen installation software.
 
-        The distribution file is at the following respositories:
+        If all else fails, the file may be manually installed. Enter one of
+        the following repositories in a web browser:
 
-           http://www.softwarediamonds/packages/Text-Replace-0.04
-           http://www.perl.com/CPAN-local/authors/id/S/SO/SOFTDIA/Text-Replace-0.04
+          http://www.softwarediamonds/packages/
+          http://www.perl.com/CPAN/authors/id/S/SO/SOFTDIA/
+
+        Right click on 'Text-Replace-0.05.tar.gz' and download to a
+        temporary installation directory. Enter the following where $make is
+        'nmake' for microsoft windows; otherwise 'make'.
+
+         gunzip Text-Replace-0.05.tar.gz
+         tar -xf Text-Replace-0.05.tar
+         perl Makefile.PL
+         $make test
+         $make install
+
+        On Microsoft operating system, nmake, tar, and gunzip must be in the
+        exeuction path. If tar and gunzip are not install, download and
+        install unxutils from
+
+         http://packages.softwarediamonds.com
 
     Prerequistes.
          None.
@@ -214,19 +465,12 @@ Title Page
          603 882-0846 E<lt>support@SoftwareDiamonds.comE<gt>
 
   3.7 Possible problems and known errors
+
     There is still much work needed to ensure the quality of this module as
     follows:
 
     *   State the functional requirements for each method including not only
         the GO paths but also what to expect for the NOGO paths
-
-    *   All the tests are GO path tests. Should add NOGO tests.
-
-    *   Add the requirements addressed as *# R: * comment to the tests
-
-    *   Write a program to build a matrix to trace test step to the
-        requirements and vice versa by parsing the *# R: * comments.
-        Automatically insert the matrix in the Test::TestUtil POD.
 
 4.0 NOTES
     The following are useful acronyms:
@@ -240,4 +484,4 @@ Title Page
 2.0 SEE ALSO
     Text::Replace
     Docs::US_DOD::SVD
-
+    Template
